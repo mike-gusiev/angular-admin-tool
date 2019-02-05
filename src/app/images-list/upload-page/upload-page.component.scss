@@ -1,0 +1,156 @@
+@import "../../../scss/variables";
+
+.upload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &__close {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    font-size: $base-font-size * 1.5;
+  }
+
+  &__form {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 20%;
+
+    &__drop {
+      border: 2px solid $primary-color;
+      border-radius: 32px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: $base-margin;
+
+      .content {
+        font-family: $base-font-family;
+        font-size: $base-font-size;
+        font-weight: $font-weight-bold;
+        color: $primary-color!important;
+      }
+    }
+
+    &__choice-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__choice {
+      font-family: $base-font-family;
+      font-size: $base-font-size * 2;
+      font-weight: $font-weight-bold;
+      display: inline-block;
+      padding: $base-padding;
+      color: $primary-color;
+    }
+
+    &__select-file {
+      display: none;
+    }
+
+    &__action {
+      padding: $base-padding;
+      width: 100%;
+      background-color: $primary-color;
+      border: 1px solid $primary-color;
+      border-radius: 1rem;
+      cursor: pointer;
+      font-family: $base-font-family;
+      font-size: $base-font-size;
+      font-weight: $font-weight-bold;
+      color: $white-color;
+      text-align: center;
+    }
+
+    &__next {
+      display: block;
+      width: 100%;
+      margin: 2% auto;
+      font-family: $base-font-family;
+      font-size: $base-font-size;
+      font-weight: $font-weight-bold;
+      color: $primary-color;
+      border-radius: 1rem;
+      padding: $base-padding / 3;
+    }
+
+    .mat-stroked-button:not([disabled]) {
+      border: 1px solid $primary-color;
+    }
+
+    &__tooltip {
+      margin-top: $base-margin;
+      > div {
+        &:last-child {
+          display: flex;
+        }
+      }
+      &__fields {
+        display: flex;
+        flex-direction: column;
+
+        &__select, &__input {
+          font-family: $base-font-family;
+          font-size: $base-font-size;
+          font-weight: $font-weight-bold;
+        }
+      }
+
+      &__action {
+        display: block;
+        width: 48%;
+        margin: 2% auto;
+        font-family: $base-font-family;
+        font-size: $base-font-size;
+        font-weight: $font-weight-bold;
+        color: $primary-color;
+        border-radius: 1rem;
+        padding: $base-padding / 3;
+
+        &_close {
+          width: 100%;
+        }
+      }
+
+      &__alert {
+        margin: 5% auto;
+        width: 100%;
+        text-align: center;
+        padding: $base-padding;
+        font-family: $base-font-family;
+        font-size: $base-font-size;
+        font-weight: $font-weight-bold;
+        color: $success-color;
+        border: 2px solid $success-color;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+.mat-step-label {
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: $font-weight-bold;
+}
+
+.mat-option-text {
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: $font-weight-bold;
+}
+
+.mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}

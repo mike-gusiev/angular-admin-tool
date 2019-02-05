@@ -1,0 +1,20 @@
+<div class="images" [@EnterLeave]>
+  <mat-card class="images__list">
+    <div class="images__list-item" *ngFor="let image of images?.data">
+      <at-image [icons]="imageIcons"
+                [image]="image"
+                (updateImageList)="filterImageList($event)"
+      ></at-image>
+    </div>
+
+    <mat-card class="images__list__add">
+      <button (click)="handleUpload()" class="images__list__add__btn" mat-fab color="primary">
+        <fa-icon class="images__list__add__btn__icon" [icon]="imageIcons.add"></fa-icon>
+      </button>
+    </mat-card>
+  </mat-card>
+</div>
+<at-upload-page *ngIf="isUpload"
+                (updateImages)="updateImageList($event)"
+                (closeModal)="handleUpload($event)"
+></at-upload-page>

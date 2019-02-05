@@ -1,0 +1,12 @@
+@import "../../scss/variables";
+
+.greeting {
+  margin: 10% auto;
+  text-align: center;
+
+  h1 {
+    font-size: $font-size-lg * 2;
+    font-family: $base-font-family;
+    font-weight: $font-weight-bold;
+  }
+}

@@ -1,0 +1,22 @@
+<mat-card class="image"
+          [@EnterLeave]
+          [matTooltip]="tooltipData?.description"
+          [matTooltipPosition]="tooltipData?.side"
+          [matTooltipClass]="'image__tooltip'"
+>
+  <mat-card-title class="image__header">
+    <h4 class="image__header__title">{{ image.title?.split('.')[0] }}</h4>
+    <div class="image__header__actions">
+      <button class="image__header__actions__btn" mat-mini-fab color="primary"
+              (click)="deleteImage(image.deletehash)">
+        <fa-icon [icon]="icons.remove"></fa-icon>
+      </button>
+    </div>
+  </mat-card-title>
+
+  <mat-card-content class="image__content">
+    <div class="image__content__body">
+      <img [src]="image.link" alt="">
+    </div>
+  </mat-card-content>
+</mat-card>

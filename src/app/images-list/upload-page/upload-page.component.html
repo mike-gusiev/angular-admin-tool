@@ -1,0 +1,85 @@
+<div class="upload" [@EnterLeave]>
+  <button (click)="closeUploadWindow()" class="upload__close" mat-fab color="primary">
+    <fa-icon class="upload__close__icon" [icon]="icons.close"></fa-icon>
+  </button>
+  <mat-card class="upload__form">
+    <mat-horizontal-stepper #stepper>
+      <mat-step [stepControl]="uploadGroup">
+        <form [formGroup]="uploadGroup">
+          <ng-template class="upload__form__tooltip__step" matStepLabel>Upload image</ng-template>
+          <file-drop headertext="Drop your image here"
+                     [customstyle]="'upload__form__drop'"
+                     (onFileDrop)="dropped($event)"
+          >
+          </file-drop>
+          <div class="upload__form__choice-wrapper">
+            <span class="upload__form__choice">or</span>
+            <input class="upload__form__select-file"
+                   type="file" id="file"
+                   (change)="onFileChange($event)"
+                   formControlName="uploadControl"
+            >
+            <label class="upload__form__action" for="file">Select image</label>
+          </div>
+          <div>
+            <button class="upload__form__next"
+                    mat-stroked-button
+                    matStepperNext
+                    [disabled]="!isFile"
+            >Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="tooltipGroup">
+        <form class="upload__form__tooltip" [formGroup]="tooltipGroup">
+          <ng-template class="upload__form__tooltip__step" matStepLabel>Add tooltip</ng-template>
+          <div class="upload__form__tooltip__fields">
+            <mat-form-field class="upload__form__tooltip__fields__input">
+              <input matInput
+                     [placeholder]="handleFormValidator('description', tooltipGroup) ? 'Field is required'
+                     : 'Enter tooltip description'"
+                     formControlName="description"
+                     required>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select class="upload__form__tooltip__fields__select"
+                          [(value)]="selectedTooltipPosition"
+                          formControlName="side"
+                          [placeholder]="handleFormValidator('side', tooltipGroup) ? 'Field is required'
+                     : 'Choose tooltip side'"
+              >
+                <mat-option value="above">Above</mat-option>
+                <mat-option value="below">Below</mat-option>
+                <mat-option value="left">Left</mat-option>
+                <mat-option value="right">Right</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <button class="upload__form__tooltip__action" mat-stroked-button matStepperPrevious>Back</button>
+            <button class="upload__form__tooltip__action"
+                    mat-stroked-button
+                    matStepperNext
+                    [disabled]="tooltipGroup.invalid"
+                    (click)="onSubmit(selectedFile, convertTooltipData())"
+            >Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template class="upload__form__tooltip__step" matStepLabel>Done</ng-template>
+        <div *ngIf="isSuccess" class="upload__form__tooltip__alert" [@EnterLeave]>
+          You've upload your file successfully
+        </div>
+        <div>
+          <button mat-stroked-button
+                  *ngIf="isSuccess"
+                  [@EnterLeave]
+                  class="upload__form__tooltip__action upload__form__tooltip__action_close"
+                  (click)="closeUploadWindow()"
+          >Close</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card>
+</div>

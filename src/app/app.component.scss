@@ -1,0 +1,29 @@
+@import "../scss/variables";
+
+.card {
+  padding: 0;
+  background-color: $primary-color;
+  border-radius: 0;
+  &__nav-bar {
+    &__list {
+      display: flex;
+      align-items: center;
+      padding-left: $base-padding * 2;
+      &-item {
+        &__link {
+          display: inline-block;
+          padding: $base-padding;
+          text-decoration: none;
+          color: $white-color;
+          font-family: $base-font-family;
+          font-weight: $font-weight-bold;
+
+          &.active {
+            background-color: $white-color;
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}
